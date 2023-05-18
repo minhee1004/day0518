@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책갈피만들기</title>
+    <style>
+        #wrapper {
+            width: 700px;
+            height: 700%;
+            margin: auto;     
+        }
+  
+        #side {
+            width: 200px;
+            height: 150px;
+            background-color:blue;
+            border-radius: 10px;
+           
+        }
+    </style>
+    <script>
+        let x=0;
+        let side; 
+        let a=0.1; 
+        let targetX=100; 
+        let flag=true;
+
+        function loop(){    
+            if(flag){
+                x++;
+
+            }else{
+                x--;
+            }
+            if(x>200|| x<=0){
+                flag=!flag;
+
+            }
+        }
+    
+        function init(){
+            side=document.getElementById("side");
+            side.style.width=200+"px";
+            side.style.position="absolute";
+            side.style.left=-50+"px"
+            wrapper=document.getElementById("wrapper");
+        }
+
+        function move(){
+            side.style.left=parseFloat(side.style.left)+a*(targetX-parseFloat(side.style.left))+"px";
+        
+        }
+        function loop(){
+            move();
+
+
+        }
+
+        addEventListener("load",function(){
+            init();
+            
+            setInterval("loop()",100);
+
+            document.querySelector("side").addEventListener("click", function(){
+                flag=!flag;                
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        
+        <div id="side">
+            home<br>
+            About<br>
+            Product<br>
+        </div>
+    
+    </div>
+</body>
+
+</html>
